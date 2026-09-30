@@ -31,6 +31,7 @@ export default function NavBar({ user, view, setView, onLogout }) {
             <button style={linkStyle(view === "home")} onClick={() => setView("home")}>Home</button>
             <button style={linkStyle(view === "record")} onClick={() => setView("record")}>Record</button>
             <button style={linkStyle(view === "history")} onClick={() => setView("history")}>My recordings</button>
+            <button style={linkStyle(view === "settings")} onClick={() => setView("settings")}>Settings</button>
           </>
         ) : (
           <button style={linkStyle(view === "admin")} onClick={() => setView("admin")}>Admin review</button>

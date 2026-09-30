@@ -7,6 +7,7 @@ import SignupScreen from "./components/SignupScreen";
 import HomeScreen from "./components/HomeScreen";
 import RecordScreen from "./components/RecordScreen";
 import HistoryScreen from "./components/HistoryScreen";
+import SettingsScreen from "./components/SettingsScreen";
 import AdminLayout from "./components/AdminLayout";
 
 export default function App() {
@@ -96,6 +97,10 @@ export default function App() {
     refreshRecordings();
   }
 
+  function refreshProfile() {
+    if (session?.user) loadProfile(session.user.id);
+  }
+
   if (loading) return null;
 
   const currentUser = profile
@@ -141,6 +146,8 @@ export default function App() {
                   setView("history");
                 }}
               />
+            ) : view === "settings" ? (
+              <SettingsScreen user={currentUser} onSaved={refreshProfile} />
             ) : (
               <HistoryScreen recordings={myRecordings} />
             )}
